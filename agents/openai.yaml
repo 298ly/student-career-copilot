@@ -1,0 +1,4 @@
+interface:
+  display_name: "大学生求职成长助手"
+  short_description: "根据真实JD与面试反馈持续优化投递、简历和成长路线"
+  default_prompt: "Use $student-career-copilot to analyze my profile and a target JD, decide whether to apply now or learn first, tailor my resume truthfully, and update my growth roadmap."

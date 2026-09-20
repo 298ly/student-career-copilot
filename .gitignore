@@ -1,0 +1,10 @@
+# 真实求职数据一律不入库
+career-workspace/
+**/raw_inputs/*
+!**/raw_inputs/.gitkeep
+*.pdf
+*.docx
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
