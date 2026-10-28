@@ -16,6 +16,8 @@ Use the templates under `assets/workspace-template/`. Keep raw inputs separate f
 - `interviews/`: raw notes plus a separate structured analysis.
 - `question_sources.csv`: question metadata and short paraphrases, not copied collections.
 
+The structured records above track decisions and history. The human-facing learning library lives separately at `<learning-root>/` and follows `references/role-knowledge-library.md`: reusable direction knowledge, shared personal project answers, and thin company-specific packs under one root entry.
+
 ## Evidence classes
 
 - `confirmed`: directly supported by an inspected artifact or explicit official feedback.
