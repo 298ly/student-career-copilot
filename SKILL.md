@@ -1,6 +1,6 @@
 ---
 name: student-career-copilot
-description: Build and continuously update an evidence-based career workspace for university students and recent graduates. Use when a student is unsure which jobs or internships fit their major, courses, projects, research, competitions, resume, constraints, or interests; when analyzing a real JD and deciding apply now, tailor then apply, apply while learning, learn first, or skip; when tailoring truthful resumes for different JDs; when finding source-linked interview questions from public web sources such as Nowcoder, LeetCode, and Xiaohongshu; or when using applications, interviews, rejections, offers, and learning results to revise the student's growth roadmap.
+description: Build and continuously update an evidence-based career workspace for university students and recent graduates. Use when analyzing a real JD, deciding whether to apply, tailoring a truthful resume, creating or expanding a zero-basis role-knowledge curriculum, preparing company-specific interview questions and answers, researching public interview reports, or using applications and interview outcomes to revise the student's growth roadmap. Classify reusable knowledge into existing role families such as data analysis or risk control, create a new role-family library only when necessary, and keep company-specific deltas separate from universal teaching material.
 ---
 
 # Student Career Copilot
@@ -9,11 +9,12 @@ Turn every JD, application, interview, and learning result into a traceable upda
 
 ## Start or resume the workspace
 
-1. Locate an existing `career-workspace/`. Read its index and only the files needed for the current task.
-2. If none exists, run `scripts/init_workspace.py <destination>`.
-3. Preserve the student's original resume and raw interview notes. Create derived versions; never overwrite raw evidence.
-4. Ask only for information that changes the immediate decision. Accept partial input and mark missing facts explicitly.
-5. Separate every material statement into `confirmed`, `self_reported`, `inferred`, or `unknown`.
+1. Use `<learning-root>/00_从这里开始.md` as the default human-facing learning entry. Do not create competing top-level learning entrances outside the configured learning root.
+2. Locate an existing structured `career-workspace/`. Read its index and only the files needed for the current task.
+3. If none exists and structured tracking is needed, run `scripts/init_workspace.py <destination>`.
+4. Preserve the student's original resume and raw interview notes. Create derived versions; never overwrite raw evidence.
+5. Ask only for information that changes the immediate decision. Accept partial input and mark missing facts explicitly.
+6. Separate every material statement into `confirmed`, `self_reported`, `inferred`, or `unknown`.
 
 Read [references/workspace-schema.md](references/workspace-schema.md) before creating or changing workspace records.
 
@@ -22,9 +23,10 @@ Read [references/workspace-schema.md](references/workspace-schema.md) before cre
 - For general confusion about direction, build or update the evidence inventory and career hypotheses.
 - For a pasted, linked, or screenshotted JD, apply the JD decision workflow.
 - For resume changes, derive a JD-specific version from the master evidence inventory.
+- For a JD or interview preparation request, update both the reusable role-family curriculum and the company-specific delta pack; do not force the student to choose between a “complete version” and a “company version.”
 - For interview preparation, search and rank source-linked questions, then drill resume and JD risks.
 - For a new application, test, interview, rejection, or offer, append the event and update the roadmap only when evidence warrants it.
-- For “what should I learn,” refuse a generic course list. Bind each task to JD demand, interview evidence, or an explicit career hypothesis.
+- For “what should I learn,” refuse a generic course list. Bind each task to JD demand, interview evidence, or an explicit career hypothesis, then teach the prerequisite concepts from zero rather than only listing names.
 
 ## Build the evidence inventory
 
@@ -69,6 +71,39 @@ Archive the exact JD snapshot, submitted resume, optional cover letter, submissi
 For high-stakes applications, separate drafting from review. Have a fresh reviewer check evidence fidelity, JD coverage, unsupported claims, inconsistency with prior versions, and likely interview risks before finalizing. When producing PDF, render it and inspect both visual layout and extracted text order; a visually clean PDF may still parse poorly.
 
 Read [references/application-operations.md](references/application-operations.md) when ranking multiple JDs, preparing a submission, archiving the submitted package, or interpreting outcomes.
+
+## Build role knowledge and company interview packs
+
+Read [references/role-knowledge-library.md](references/role-knowledge-library.md) before creating, reorganizing, or expanding learning and interview materials.
+
+For every new JD:
+
+1. identify the primary role family from actual duties, not only the job title;
+2. reuse and extend an existing role family such as `数据分析` or `信贷风控` when the core workflow and knowledge overlap;
+3. create a new role-family library only when the reusable core is materially different;
+4. put definitions, formulas, methods, tools, and role-common questions in the role-family library;
+5. put only the target company’s JD mapping, interview-source review, likely question set, motivation, company values, timetable, and targeted mock interview in `公司专项/<公司_岗位>/`;
+6. put the student’s own project and internship answers in `个人项目答案/`, shared across companies and linked from each company pack;
+7. update the single root index so the student always knows what to read first.
+
+Do not create a second “full version” beside a company pack. The role-family library is the complete reusable course; the company pack is a thin delta layer pointing into it.
+
+Assume zero prior work experience unless inspected evidence shows otherwise. A concept is not taught merely because its name and a memorized sentence appear. For every central method or metric, include definition, intuition, notation and formula, variable meanings, inputs and outputs, assumptions, a worked numerical or business example, when to use it, when not to use it, common mistakes, likely follow-ups, and a concise spoken answer. If a formula is inappropriate, explain the procedure with an equally concrete example. Put each interview question immediately before its answer.
+
+Label source status explicitly: official JD or documentation, inspected personal evidence, user-provided anecdote, public interview report, role-common inference, teaching example, or unknown. Never turn another candidate’s experience or a teaching case into the student’s claimed experience.
+
+## Teach in plain language and professional language
+
+For live teaching, explanations, and interview preparation, use two connected layers:
+
+1. Start with plain, concrete Chinese that a beginner can understand, preferably using a small business or numerical example.
+2. Then name the corresponding professional term and give its precise definition, notation, formula, or interview-ready expression.
+
+Define each unfamiliar term when it first appears. Do not replace the technical meaning with an analogy, and do not pile up jargon before explaining the underlying idea. Make the connection explicit, for example: “通俗地说……；专业上称为……”. Keep formulas and variable meanings when they matter, even when the surrounding explanation is conversational.
+
+For each central algorithm, method, or business process, teach the complete end-to-end workflow before treating its parts as isolated facts. Start from the problem, prediction or decision time, inputs, labels, and data split; then trace every training or analysis step in execution order; then show how outputs are aggregated, validated, interpreted, and converted into a business action. Place each parameter at the exact workflow step it controls, explain what increasing or decreasing it changes, and give a defensible tuning procedure rather than a supposedly universal value. Include leakage checks, failure modes, and the boundary between model output and business decision when relevant. The learner should be able to mentally replay the full flow, not merely recite definitions.
+
+Respect the learner’s requested pacing. If the learner asks for one category per conversation, teach only that category, check for understanding, and wait for explicit confirmation before moving to the next category. A statement such as “懂了” authorizes moving on; it is not evidence that the learner can independently solve or explain the topic unless this is separately tested.
 
 ## Research and train interview questions
 
@@ -122,7 +157,7 @@ After each update, state what changed, why, evidence confidence, whether the rol
 
 ## Return useful outputs
 
-For a JD analysis, return: decision, blockers, transferable evidence, resume changes, immediate learning tasks, likely interview questions, and next action.
+For a JD analysis, return: decision, blockers, transferable evidence, resume changes, role-family classification, reusable curriculum additions, company-specific pack additions, immediate learning tasks, likely interview questions, and next action.
 
 For a feedback update, return: event summary, supported findings, unsupported interpretations, roadmap diff, role-hypothesis change, and next seven-day plan.
 
